@@ -16,11 +16,17 @@ export default {
   },
   computed: {
     icon() {
-      return "fa-angle-left";
+      // Alternando o icone toggle
+      return this.$store.state.isMenuVisible
+        ? "fa-angle-left"
+        : "fa-angle-down";
     },
   },
   methods: {
-    toggleMenu() {},
+    toggleMenu() {
+      // Chamando a função dentro de store
+      this.$store.commit("toggleMenu");
+    },
   },
 };
 </script>
