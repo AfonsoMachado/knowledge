@@ -16,6 +16,7 @@ consign()
     .then('./config/middlewares.js')
     .then('./api/validation.js')
     .then('./api') // Carrega toda a pasta API
+    .then('./schedule')
     .then('./config/routes.js')
     .into(app)
 
