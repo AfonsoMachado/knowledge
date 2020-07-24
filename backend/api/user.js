@@ -27,6 +27,9 @@ module.exports = app => {
         // Caso exista um id na requisição, para casos onde é feita uma alteração de usuario
         if (req.params.id) user.id = req.params.id
 
+        if (!req.originalUrl.startsWith('/users')) user.admin = false
+        if (!req.user || !req.user.admin) user.admin = false
+
         // Validações necessárias
         try {
             existsOrError(user.name, 'Nome não informado')
