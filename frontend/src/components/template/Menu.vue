@@ -3,6 +3,7 @@
 </template>
 
 <script>
+// para mapear usuário do store.js
 import { mapState } from "vuex";
 
 export default {
