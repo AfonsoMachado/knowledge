@@ -9,9 +9,10 @@
       <i class="fa fa-angle-down"></i>
     </div>
     <div class="user-dropdown-content">
-      <a href>
+      <!-- Rota para a pagina de admin, renderizado como uma tag a -->
+      <router-link to="/admin">
         <i class="fa fa-cogs"></i> Administração
-      </a>
+      </router-link>
       <a href>
         <i class="fa fa-sign-out"></i> Sair
       </a>
