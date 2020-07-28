@@ -9,7 +9,11 @@ module.exports = app => {
      * @param {Object} res 
      */
     const save = (req, res) => {
-        const category = { ...req.body }
+        const category = {
+            id: req.body.id,
+            name: req.body.name,
+            parentId: req.body.parentId
+        }
         // Caso existe um ID na requisição, trata-se de uma alteração
         if (req.params.id) category.id = req.params.id
 

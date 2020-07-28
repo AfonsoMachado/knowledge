@@ -6,7 +6,7 @@
       <b-row>
         <!-- se for um dispositivo small, ocupa 12 colunas -->
         <b-col md="6" sm="12">
-          <b-form-group label="Nome" label-for="user-name">
+          <b-form-group label="Nome:" label-for="user-name">
             <b-form-input
               id="user-name"
               type="text"
@@ -20,7 +20,7 @@
 
         <!-- mais 6 colunas -->
         <b-col md="6" sm="12">
-          <b-form-group label="E-mail" label-for="user-email">
+          <b-form-group label="E-mail:" label-for="user-email">
             <b-form-input
               id="user-email"
               type="text"
@@ -33,26 +33,19 @@
         </b-col>
       </b-row>
 
+      <b-form-checkbox v-model="user.admin" class="mt-3 mb-3" v-if="mode === 'save'">Administrador?</b-form-checkbox>
       <b-form-checkbox
-        id="user-admin"
         v-model="user.admin"
         class="mt-3 mb-3"
         onclick="return false;"
-        v-show="mode === 'save'"
-      >Administrador?</b-form-checkbox>
-      <b-form-checkbox
-        id="user-admin"
-        v-model="user.admin"
-        class="mt-3 mb-3"
-        onclick="return false;"
-        v-show="mode === 'remove'"
+        v-else
       >Administrador</b-form-checkbox>
 
       <!-- Parte de senha, mostra somemte se o modo for 'save -->
       <b-row v-show="mode === 'save'">
         <!-- se for um dispositivo small, ocupa 12 colunas -->
         <b-col md="6" sm="12">
-          <b-form-group label="Senha" label-for="user-password">
+          <b-form-group label="Senha:" label-for="user-password">
             <b-form-input
               id="user-password"
               type="password"
@@ -65,7 +58,7 @@
 
         <!-- mais 6 colunas -->
         <b-col md="6" sm="12">
-          <b-form-group label="Confirmação de Senha" label-for="user-confirm-password">
+          <b-form-group label="Confirmação de Senha:" label-for="user-confirm-password">
             <b-form-input
               id="user-confirm-password"
               type="password"
@@ -93,6 +86,7 @@
     <b-table hover striped :items="users" :fields="fields">
       <!-- ìcones de ação -->
       <template slot="actions" slot-scope="data">
+        <!-- data.item é o item selecionado na linha -->
         <b-button variant="warning" @click="loadUser(data.item)" class="mr-2">
           <i class="fa fa-pencil"></i>
         </b-button>
