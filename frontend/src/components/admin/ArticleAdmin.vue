@@ -68,6 +68,8 @@
         </b-button>
       </template>
     </b-table>
+    <!-- Paginação, com quantidade de linhas por pagina, e de linhas totais  -->
+    <b-pagination size="md" v-model="page" :total-rows="count" :per-page="limit" />
   </div>
 </template>
 
@@ -104,7 +106,7 @@ export default {
   methods: {
     // Carrega a lista de categorias do backend
     loadArticles() {
-      const url = `${baseApiUrl}/articles`;
+      const url = `${baseApiUrl}/articles?page=${this.page}`;
       axios.get(url).then((res) => {
         // Capturando categorias do backend
         //this.articles = res.data;
@@ -165,6 +167,12 @@ export default {
           return { value: user.id, text: `${user.name} - ${user.email}` };
         });
       });
+    },
+  },
+  watch: {
+    // Observando alterações no atributo page
+    page() {
+      this.loadArticles();
     },
   },
   mounted() {
