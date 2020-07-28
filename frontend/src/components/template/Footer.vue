@@ -2,7 +2,7 @@
   <footer class="footer">
     <span>
       Copyright
-      <strong>Cod3r</strong> © 2015-2018
+      <strong>Cod3r</strong> © 2015-2020
     </span>
   </footer>
 </template>
