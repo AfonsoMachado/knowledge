@@ -52,6 +52,19 @@ export default {
       });
     },
   },
+  watch: {
+    // parametros para quando mudar de pagina
+    // executa sempre que a rota mudar
+    $route(to) {
+      this.category.id = to.params.id
+      this.articles = []
+      this.page = 1
+      this.loadMore = true
+
+      this.getCategory()
+      this.getArticles()
+    }
+  },
   mounted() {
     // console.log(this.$route.params.id);
 

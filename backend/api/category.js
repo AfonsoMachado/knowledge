@@ -156,7 +156,7 @@ module.exports = app => {
      */
     const toTree = (categories, tree) => {
         // Caso a arvore esteja vazia, usa primeiramente as categorias que não tem parentId
-        if (!tree) tree = categories.filter(c => !c.parenteId)
+        if (!tree) tree = categories.filter(c => !c.parentId)
 
         // Verifica quais os filhos de parentNode
         tree = tree.map(parentNode => {

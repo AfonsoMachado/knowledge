@@ -1,9 +1,9 @@
 <template>
   <aside class="menu" v-show="isMenuVisible">
-    <dib class="menu-filter">
+    <div class="menu-filter">
       <i class="fa fa-search fa-lg"></i>
       <input type="text" placeholder="Digite para filtrar..." v-model="treeFilter" class="filter-field">
-    </dib>
+    </div>
     <Tree :data="treeData" :options="treeOptions" :filter="treeFilter" ref="tree"/>
   </aside>
 </template>
@@ -25,6 +25,7 @@ export default {
       treeFilter: '',
       treeData: this.getTreeData(),
       treeOptions: {
+        // renomenando propriedade
         propertyNames: {'text': 'name'},
         // Caso não encontre nenhum no filtro
         filter: {emptyText: 'Categoria não encontrada'}
@@ -40,7 +41,17 @@ export default {
       const url = `${baseApiUrl}/categories/tree`;
       return axios.get(url).then((res) => res.data);
     },
+    onNodeSelect(node) {
+      this.$router.push({
+        name: 'articlesByCategory',
+        params: { id: node.id }
+      })
+    }
   },
+  mounted() {
+    // Acessando a referencia do elemento tree no template
+    this.$refs.tree.$on('node:selected', this.onNodeSelect)
+  }
 };
 </script>
 
