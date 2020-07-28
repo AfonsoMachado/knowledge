@@ -3,6 +3,9 @@
     <a class="toggle" @click="toggleMenu" v-if="!hideToggle">
       <i class="fa fa-lg" :class="icon"></i>
     </a>
+    <router-link class="logo" to="/" v-if="!hideToggle">
+      <img src="@/assets/base.png" alt="Logo" />
+    </router-link>
     <h1 class="title">
       <router-link to="/">{{title}}</router-link>
     </h1>
@@ -81,5 +84,10 @@ header.header > a.toggle {
 header.header > a.toggle:hover {
   color: #fff;
   background-color: rgba(0, 0, 0, 0.2);
+}
+
+.logo > img {
+  height: 40px;
+  margin-left: 10px;
 }
 </style>
