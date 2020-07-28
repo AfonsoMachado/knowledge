@@ -117,6 +117,29 @@ export default {
       this.user = {};
       this.loadUsers();
     },
+    save() {
+      // caso o id estiver setado, o metodo será put. e inserido o id na url
+      const method = this.user.id ? "put" : "post";
+      const id = this.user.id ? `/${this.user.id}` : "";
+
+      axios[method](`${baseApiUrl}/users${id}`, this.user)
+        .then(() => {
+          // Dando certo mostra o toast de sucesso
+          this.$toasted.global.defaultSuccess();
+          this.reset();
+        })
+        .catch(showError);
+    },
+    remove() {
+      const id = this.user.id;
+      axios
+        .delete(`${baseApiUrl}/users/${id}`)
+        .then(() => {
+          this.$toasted.global.defaultSuccess();
+          this.reset();
+        })
+        .catch(showError);
+    },
   },
   mounted() {
     this.loadUsers();
