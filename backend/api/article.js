@@ -58,7 +58,7 @@ module.exports = app => {
         }
     }
     // Limite de artigos em cada página
-    const limit = 10
+    const limit = 3
 
     /**
      * Captura os artigos de forma paginada
