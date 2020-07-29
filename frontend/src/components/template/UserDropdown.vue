@@ -9,8 +9,8 @@
       <i class="fa fa-angle-down"></i>
     </div>
     <div class="user-dropdown-content">
-      <!-- Rota para a pagina de admin, renderizado como uma tag a -->
-      <router-link to="/admin">
+      <!-- Rota para a pagina de admin, renderizado como uma tag a, exibido somente se o usuario for um administrador -->
+      <router-link to="/admin" v-if="user.admin">
         <i class="fa fa-cogs"></i> Administração
       </router-link>
       <!-- Chamando a função logout no click -->

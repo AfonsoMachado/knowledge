@@ -7,6 +7,8 @@ import ArticlesByCategory from '@/components/article/ArticlesByCategory';
 import ArticleById from '@/components/article/ArticleById';
 import Auth from '@/components/auth/Auth'
 
+import { userKey } from '@/global'
+
 Vue.use(VueRouter)
 
 const routes = [{
@@ -16,7 +18,8 @@ const routes = [{
 }, {
   name: 'adminPages',
   path: '/admin',
-  component: AdminPages
+  component: AdminPages,
+  meta: { requiresAdmin: true }
 }, {
   name: 'articlesByCategory',
   path: '/categories/:id/articles',
@@ -31,7 +34,23 @@ const routes = [{
   component: Auth
 }]
 
-export default new VueRouter({
+const router = new VueRouter({
   mode: 'history',
   routes: routes
 })
+
+// Navegando de uma rota pra outra
+router.beforeEach((to, from, next) => {
+  const json = localStorage.getItem(userKey)
+  // case requiresAdmin for verdadeiro
+  if (to.matched.some(record => record.meta.requiresAdmin)) {
+    const user = JSON.parse(json)
+    // caso o usuario seja administrador, continua. se não é redirecionado para o path /
+
+    user && user.admin ? next() : next({ path: '/' })
+  } else {
+    next()
+  }
+})
+
+export default router

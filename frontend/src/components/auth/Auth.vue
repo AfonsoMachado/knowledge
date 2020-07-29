@@ -8,12 +8,21 @@
       <!-- INPUTS -->
       <input v-if="showSignup" v-model="user.name" placeholder="Nome" type="text" />
       <input v-model="user.email" name="email" placeholder="E-mail" type="text" />
-      <input v-model="user.password" name="password" placeholder="Senha" type="password" />
+      <input
+        v-if="!showSignup"
+        v-model="user.password"
+        name="password"
+        placeholder="Senha"
+        type="password"
+        @keyup.enter="signin"
+      />
+      <input v-else v-model="user.password" name="password" placeholder="Senha" type="password" />
       <input
         v-if="showSignup"
         v-model="user.confirmPassword"
         placeholder="Confirme a Senha"
         type="password"
+        @keyup.enter="signup"
       />
 
       <!-- BOTÕES -->
