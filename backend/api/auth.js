@@ -32,6 +32,7 @@ module.exports = app => {
             email: user.email,
             admin: user.admin,
             iat: now,
+            // exp: now + 10
             // Data de expiração, token válido em 3 dias
             exp: now + (60 * 60 * 24 * 3)
         }
