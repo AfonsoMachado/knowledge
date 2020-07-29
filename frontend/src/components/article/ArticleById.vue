@@ -26,7 +26,7 @@ export default {
   },
   updated() {
     // inserindo hightlight no bloco de código no artigo
-    document.querySelectorAll(".article-content pre").forEach((e) => {
+    document.querySelectorAll(".article-content pre.ql-syntax").forEach((e) => {
       hljs.highlightBlock(e);
     });
   },

@@ -1,6 +1,6 @@
 <template>
   <div id="app" :class="{'hide-menu': !isMenuVisible || !user}">
-    <Header title="Cod3r - Base de Conhecimento" :hideToggle="!user" :hideUserDropdown="!user" />
+    <Header title="Base de Conhecimento" :hideToggle="!user" :hideUserDropdown="!user" />
     <Menu v-if="user" />
     <!-- Enquanto estiver validando token, o loading é exibido -->
     <Loading v-if="validatingToken" />
@@ -44,8 +44,12 @@ export default {
       }
 
       const res = await axios.post(`${baseApiUrl}/validateToken`, userData);
+
       if (res.data) {
         this.$store.commit("setUser", userData);
+        if (this.$mq === "xs" || this.$mq === "sm") {
+          this.$store.commit("toggleMenu", false);
+        }
       } else {
         // token nao validado
         localStorage.removeItem(userKey);

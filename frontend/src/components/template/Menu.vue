@@ -46,6 +46,10 @@ export default {
         name: 'articlesByCategory',
         params: { id: node.id }
       })
+      // responsividade, fechando menu automaticamente
+      if (this.$mq === 'xs' || this.$mq === 'sm') {
+        this.$store.commit('toggleMenu', false)
+      }
     }
   },
   mounted() {
