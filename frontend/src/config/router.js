@@ -26,7 +26,7 @@ const routes = [{
   path: '/articles/:id',
   component: ArticleById
 }, {
-  name: 'Auth',
+  name: 'auth',
   path: '/auth',
   component: Auth
 }]
