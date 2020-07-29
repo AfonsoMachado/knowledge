@@ -36,6 +36,7 @@ export default {
       // removendo o usuario logado do localstorage
       localStorage.removeItem(userKey);
       this.$store.commit("setUser", null);
+      // voltando para a tela de autenticação
       this.$router.push({ name: "auth" });
     },
   },
