@@ -80,6 +80,10 @@ Executando em http://localhost:8080/
 
 Esse projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
 
+## :white_check_mark: Resultado
+
+![](https://github.com/AfonsoMachado/knowledge/blob/master/final.jpg)
+
 ---
 
 <p align="center">Feito com 💜 por <strong><a href="https://www.linkedin.com/in/AfonsoMachado/">Afonso Machado</a> 🥰 </strong> </p>
