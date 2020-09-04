@@ -31,6 +31,8 @@ Para instalar e executar o software localmente, é necessário ter um ambiente N
 $ git clone https://github.com/AfonsoMachado/knowledge.git
 ```
 
+<!-- comandos postgres: \l \c knowledge \d -->
+
 ### Configurando banco de dados:
 
 #### MongoDB
